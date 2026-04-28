@@ -121,6 +121,8 @@
   .t-closure .num, .t-closure .lbl { color: #854F0B; }
   .t-exam { background: #EEEDFE; border-color: #AFA9EC !important; }
   .t-exam .num, .t-exam .lbl { color: #534AB7; }
+  .t-exam2 { background: #D8D5FB; border-color: #8B84E8 !important; }
+  .t-exam2 .num, .t-exam2 .lbl { color: #2D24A0; font-weight: 600; }
   .t-partial { background: #E6F1FB; border-color: #85B7EB !important; }
   .t-partial .num, .t-partial .lbl { color: #185FA5; }
   .t-range1 { background: #EAF3DE; border-color: #C0DD97 !important; }
@@ -156,7 +158,8 @@
   <div class="legend">
     <span style="background:#FCEBEB;color:#993C1D;border-color:#F09595;">공휴일·법정휴무</span>
     <span style="background:#FAEEDA;color:#854F0B;border-color:#EF9F27;">학교행사·재량휴무</span>
-    <span style="background:#EEEDFE;color:#534AB7;border-color:#AFA9EC;">시험기간 휴강</span>
+    <span style="background:#EEEDFE;color:#534AB7;border-color:#AFA9EC;">시험주간</span>
+    <span style="background:#D8D5FB;color:#2D24A0;border-color:#8B84E8;">시험일</span>
     <span style="background:#E6F1FB;color:#185FA5;border-color:#85B7EB;">부분운영</span>
     <span style="background:#EAF3DE;color:#3B6D11;border-color:#97C459;">방과후 운영</span>
     <span style="background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5;">방학중 방과후</span>
@@ -191,11 +194,11 @@ const events = {
   '2026-05-15':{type:'closure',label:'체육대회'},
   '2026-05-25':{type:'holiday',label:'대체공휴일'},
   '2026-06-03':{type:'holiday',label:'지방선거'},
-  '2026-06-22':{type:'exam',label:'2회고사'},
-  '2026-06-23':{type:'exam',label:'2회고사'},
-  '2026-06-24':{type:'exam',label:'2회고사'},
-  '2026-06-25':{type:'exam',label:'2회고사'},
-  '2026-06-26':{type:'exam',label:'2회고사'},
+  '2026-06-22':{type:'exam',label:'2회고사 주간'},
+  '2026-06-23':{type:'exam',label:'2회고사 주간'},
+  '2026-06-24':{type:'exam2',label:'2회고사'},
+  '2026-06-25':{type:'exam2',label:'2회고사'},
+  '2026-06-26':{type:'exam2',label:'2회고사'},
   '2026-07-07':{type:'partial',label:'1·2학년 휴강'},
   '2026-07-16':{type:'end1',label:'방과후 종료'},
   '2026-07-17':{type:'holiday',label:'제헌절'},
@@ -232,8 +235,11 @@ function renderMonth(y,m){
     const dow=(fd+d-1)%7;
     const ev=events[key];
     const cls=getCellClass(key,dow);
-    const numCls=!cls?(dow===5?'sat':dow===6?'sun':''):'bold';
-    h+=`<div class="cell${cls?' '+cls:''}">`;
+    const isSat=dow===5, isSun=dow===6;
+    const numCls=!cls?(isSat?'sat':isSun?'sun':''):'bold';
+    const hasSpecialEvent=ev&&['holiday','closure','exam','exam2','partial','start1','end1','start2','end2'].includes(ev.type);
+    const weekendBg=!hasSpecialEvent?(isSat?'background:#EEF5FC;':isSun?'background:#FEF0F0;':''):'';
+    h+=`<div class="cell${cls?' '+cls:''}" style="${weekendBg}">`;
     h+=`<span class="num${numCls?' '+numCls:''}">${d}</span>`;
     if(ev) h+=`<span class="lbl">${ev.label}</span>`;
     h+=`</div>`;
