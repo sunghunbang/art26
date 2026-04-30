@@ -133,10 +133,10 @@
   .t-start1 .num, .t-start1 .lbl { color: #fff; font-weight: 600; }
   .t-end1 { background: #3B6D11; border-color: #3B6D11 !important; }
   .t-end1 .num, .t-end1 .lbl { color: #fff; font-weight: 600; }
-  .t-start2 { background: #085041; border-color: #085041 !important; }
-  .t-start2 .num, .t-start2 .lbl { color: #fff; font-weight: 600; }
-  .t-end2 { background: #085041; border-color: #085041 !important; }
-  .t-end2 .num, .t-end2 .lbl { color: #fff; font-weight: 600; }
+  .t-start2 { background: #F5C518; border-color: #D4A000 !important; }
+  .t-start2 .num, .t-start2 .lbl { color: #4a3000; font-weight: 600; }
+  .t-end2 { background: #F5C518; border-color: #D4A000 !important; }
+  .t-end2 .num, .t-end2 .lbl { color: #4a3000; font-weight: 600; }
 
   @media (max-width: 500px) {
     .cal-grid { grid-template-columns: 1fr; }
@@ -163,7 +163,7 @@
     <span style="background:#E6F1FB;color:#185FA5;border-color:#85B7EB;">부분운영</span>
     <span style="background:#EAF3DE;color:#3B6D11;border-color:#97C459;">방과후 운영</span>
     <span style="background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5;">방학중 방과후</span>
-    <span style="background:#3B6D11;color:#fff;border-color:#3B6D11;">시작·종료일</span>
+    <span style="background:#F5C518;color:#4a3000;border-color:#D4A000;">방학특강·시작·종료</span>
   </div>
 
   <div class="summary">
@@ -172,8 +172,9 @@
       <div style="color:#3B6D11;">5.6(수) ~ 7.16(목) · 약 72일</div>
     </div>
     <div class="summary-box" style="background:#E1F5EE;border-color:#5DCAA5;">
-      <div class="title" style="color:#085041;">▸ 방학중 미술방과후 (예정)</div>
-      <div style="color:#0F6E56;">7.27(월) ~ 8.14(금) · 15일 · 1일 7시간</div>
+      <div class="title" style="color:#085041;">▸ 방학중 미술방과후 (시작일 변경예정)</div>
+      <div style="color:#0F6E56;">7.22(수) ~ 8.11(화) · 15일 · 1일 7시간</div>
+      <div style="color:#0F6E56;margin-top:2px;">개학일 8.18(화)</div>
     </div>
   </div>
 
@@ -182,7 +183,7 @@
 </div>
 
 <script>
-const DAYS = ['월','화','수','목','금','토','일'];
+const DAYS = ['일','월','화','수','목','금','토'];
 const MONTHS = ['','1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
 
 const events = {
@@ -203,8 +204,9 @@ const events = {
   '2026-07-16':{type:'end1',label:'방과후 종료'},
   '2026-07-17':{type:'holiday',label:'제헌절'},
   '2026-07-21':{type:'closure',label:'방학식'},
-  '2026-07-27':{type:'start2',label:'미술방과후 시작'},
-  '2026-08-14':{type:'end2',label:'미술방과후 종료'},
+  '2026-07-22':{type:'start2',label:'방학특강-방과후 시작'},
+  '2026-08-11':{type:'end2',label:'방학특강-방과후 종료'},
+  '2026-08-18':{type:'closure',label:'개학일'},
 };
 
 function ds(y,m,d){ return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
@@ -213,19 +215,18 @@ function getCellClass(key, dow){
   const ev = events[key];
   if(ev) return 't-'+ev.type;
   if(key>='2026-05-06'&&key<='2026-07-16') return 't-range1';
-  if(key>='2026-07-27'&&key<='2026-08-14') return 't-range2';
+  if(key>='2026-07-22'&&key<='2026-08-11') return 't-range2';
   return '';
 }
 
 function renderMonth(y,m){
   let fd = new Date(y,m-1,1).getDay();
-  fd = fd===0?6:fd-1;
   const dim = new Date(y,m,0).getDate();
 
   let h = `<div class="month-box">`;
   h += `<div class="month-header">${y}년 ${MONTHS[m]}</div>`;
   h += `<div class="day-labels">`;
-  DAYS.forEach((d,i)=>{ h+=`<div class="day-label${i===5?' sat':i===6?' sun':''}">${d}</div>`; });
+  DAYS.forEach((d,i)=>{ h+=`<div class="day-label${i===6?' sat':i===0?' sun':''}">${d}</div>`; });
   h += `</div><div class="cells">`;
 
   for(let i=0;i<fd;i++) h+=`<div class="cell empty"></div>`;
@@ -235,7 +236,7 @@ function renderMonth(y,m){
     const dow=(fd+d-1)%7;
     const ev=events[key];
     const cls=getCellClass(key,dow);
-    const isSat=dow===5, isSun=dow===6;
+    const isSat=dow===6, isSun=dow===0;
     const numCls=!cls?(isSat?'sat':isSun?'sun':''):'bold';
     const hasSpecialEvent=ev&&['holiday','closure','exam','exam2','partial','start1','end1','start2','end2'].includes(ev.type);
     const weekendBg=!hasSpecialEvent?(isSat?'background:#EEF5FC;':isSun?'background:#FEF0F0;':''):'';
