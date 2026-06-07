@@ -146,6 +146,13 @@
   .t-dongmun .num, .t-dongmun .lbl { color: #6B2FA0; }
   .t-dongmun-remove { background: #D8C4EE; border-color: #7B3FAF !important; }
   .t-dongmun-remove .num, .t-dongmun-remove .lbl { color: #3D1060; font-weight: 600; }
+  /* 예혼전 — 청록/민트 계열 */
+  .t-yehon-install { background: #D0F0EC; border-color: #2BAA96 !important; }
+  .t-yehon-install .num, .t-yehon-install .lbl { color: #0D5C52; font-weight: 600; }
+  .t-yehon-open { background: #0D7A6A; border-color: #085549 !important; }
+  .t-yehon-open .num, .t-yehon-open .lbl { color: #fff; font-weight: 600; }
+  .t-yehon-pres { background: #B8EDE7; border-color: #3CC4B0 !important; }
+  .t-yehon-pres .num, .t-yehon-pres .lbl { color: #0A4A42; font-weight: 600; }
 
   @media (max-width: 500px) {
     .cal-grid { grid-template-columns: 1fr; }
@@ -177,6 +184,9 @@
     <span style="background:#6A0DAD;color:#fff;border-color:#4A007A;">동문전 오픈</span>
     <span style="background:#F3EAFC;color:#6B2FA0;border-color:#B07DD6;">동문전 전시</span>
     <span style="background:#D8C4EE;color:#3D1060;border-color:#7B3FAF;">동문전 철거</span>
+    <span style="background:#D0F0EC;color:#0D5C52;border-color:#2BAA96;">예혼전 설치</span>
+    <span style="background:#0D7A6A;color:#fff;border-color:#085549;">예혼전 오픈</span>
+    <span style="background:#B8EDE7;color:#0A4A42;border-color:#3CC4B0;">예혼전 프레젠테이션</span>
   </div>
 
   <div class="summary">
@@ -192,7 +202,12 @@
     <div class="summary-box" style="background:#F3EAFC;border-color:#B07DD6;">
       <div class="title" style="color:#5B1F8A;">▸ 제3회 미술과 동문전 (30주년)</div>
       <div style="color:#6B2FA0;">6.28(일) 설치 · 6.29~7.10 전시</div>
-      <div style="color:#4A007A;margin-top:2px;">7.2(목) 오픈커팅 · 7.11(토) 철거</div>
+      <div style="color:#4A007A;margin-top:2px;">7.2(목) 오픈식 · 7.11(토) 철거</div>
+    </div>
+    <div class="summary-box" style="background:#D0F0EC;border-color:#2BAA96;">
+      <div class="title" style="color:#0D5C52;">▸ 예혼전 (드로잉전)</div>
+      <div style="color:#0D5C52;">7.13(월) 설치 · 7.14(화) 오픈식 15:00~</div>
+      <div style="color:#0A4A42;margin-top:2px;">7.15(수) 프레젠테이션 (시청각실) 5~7교시</div>
     </div>
   </div>
 
@@ -238,6 +253,9 @@ const events = {
   '2026-07-09':{type:'dongmun',label:'동문전'},
   '2026-07-10':{type:'dongmun',label:'동문전'},
   '2026-07-11':{type:'dongmun-remove',label:'동문전 철거'},
+  '2026-07-13':{type:'yehon-install',label:'예혼전 설치',sub2:'4~7교시'},
+  '2026-07-14':{type:'yehon-open',label:'예혼전 오픈식',sub2:'15:00~'},
+  '2026-07-15':{type:'yehon-pres',label:'예혼전 프레젠테이션',sub2:'시청각실 5~7교시'},
 };
 
 function ds(y,m,d){ return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
@@ -269,7 +287,7 @@ function renderMonth(y,m){
     const cls=getCellClass(key,dow);
     const isSat=dow===6, isSun=dow===0;
     const numCls=!cls?(isSat?'sat':isSun?'sun':''):'bold';
-    const hasSpecialEvent=ev&&['holiday','closure','exam','exam2','partial','start1','end1','start2','end2'].includes(ev.type);
+    const hasSpecialEvent=ev&&['holiday','closure','exam','exam2','partial','start1','end1','start2','end2','yehon-install','yehon-open','yehon-pres'].includes(ev.type);
     const weekendBg=!hasSpecialEvent?(isSat?'background:#EEF5FC;':isSun?'background:#FEF0F0;':''):'';
     h+=`<div class="cell${cls?' '+cls:''}" style="${weekendBg}">`;
     h+=`<span class="num${numCls?' '+numCls:''}">${d}</span>`;
