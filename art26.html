@@ -90,7 +90,7 @@
   }
   .cell {
     padding: 3px 2px;
-    min-height: 48px;
+    min-height: 52px;
     border: 0.5px solid #eee;
     display: flex;
     flex-direction: column;
@@ -137,6 +137,15 @@
   .t-start2 .num, .t-start2 .lbl { color: #4a3000; font-weight: 600; }
   .t-end2 { background: #F5C518; border-color: #D4A000 !important; }
   .t-end2 .num, .t-end2 .lbl { color: #4a3000; font-weight: 600; }
+  /* 동문전 — 보라/자주 계열 (타 일정과 명확히 구분) */
+  .t-dongmun-install { background: #EDE0F5; border-color: #9B59C8 !important; }
+  .t-dongmun-install .num, .t-dongmun-install .lbl { color: #5B1F8A; font-weight: 600; }
+  .t-dongmun-open { background: #6A0DAD; border-color: #4A007A !important; }
+  .t-dongmun-open .num, .t-dongmun-open .lbl { color: #fff; font-weight: 600; }
+  .t-dongmun { background: #F3EAFC; border-color: #B07DD6 !important; }
+  .t-dongmun .num, .t-dongmun .lbl { color: #6B2FA0; }
+  .t-dongmun-remove { background: #D8C4EE; border-color: #7B3FAF !important; }
+  .t-dongmun-remove .num, .t-dongmun-remove .lbl { color: #3D1060; font-weight: 600; }
 
   @media (max-width: 500px) {
     .cal-grid { grid-template-columns: 1fr; }
@@ -164,6 +173,10 @@
     <span style="background:#EAF3DE;color:#3B6D11;border-color:#97C459;">방과후 운영</span>
     <span style="background:#E1F5EE;color:#0F6E56;border-color:#5DCAA5;">방학중 방과후</span>
     <span style="background:#F5C518;color:#4a3000;border-color:#D4A000;">방학특강·시작·종료</span>
+    <span style="background:#EDE0F5;color:#5B1F8A;border-color:#9B59C8;">동문전 설치</span>
+    <span style="background:#6A0DAD;color:#fff;border-color:#4A007A;">동문전 오픈</span>
+    <span style="background:#F3EAFC;color:#6B2FA0;border-color:#B07DD6;">동문전 전시</span>
+    <span style="background:#D8C4EE;color:#3D1060;border-color:#7B3FAF;">동문전 철거</span>
   </div>
 
   <div class="summary">
@@ -175,6 +188,11 @@
       <div class="title" style="color:#085041;">▸ 방학중 미술방과후 (시작일 변경예정)</div>
       <div style="color:#0F6E56;">7.22(수) ~ 8.11(화) · 15일 · 1일 7시간</div>
       <div style="color:#0F6E56;margin-top:2px;">개학일 8.18(화)</div>
+    </div>
+    <div class="summary-box" style="background:#F3EAFC;border-color:#B07DD6;">
+      <div class="title" style="color:#5B1F8A;">▸ 제3회 미술과 동문전 (30주년)</div>
+      <div style="color:#6B2FA0;">6.28(일) 설치 · 6.29~7.10 전시</div>
+      <div style="color:#4A007A;margin-top:2px;">7.2(목) 오픈커팅 · 7.11(토) 철거</div>
     </div>
   </div>
 
@@ -200,13 +218,26 @@ const events = {
   '2026-06-24':{type:'exam2',label:'2회고사'},
   '2026-06-25':{type:'exam2',label:'2회고사'},
   '2026-06-26':{type:'exam2',label:'2회고사'},
-  '2026-07-07':{type:'partial',label:'1·2학년 휴강'},
+  '2026-07-07':{type:'partial',label:'1·2학년 휴강',sub:'동문전'},
   '2026-07-16':{type:'end1',label:'방과후 종료'},
   '2026-07-17':{type:'holiday',label:'제헌절'},
   '2026-07-21':{type:'closure',label:'방학식'},
   '2026-07-22':{type:'start2',label:'방학특강-방과후 시작'},
   '2026-08-11':{type:'end2',label:'방학특강-방과후 종료'},
   '2026-08-18':{type:'closure',label:'개학일'},
+  '2026-06-28':{type:'dongmun-install',label:'동문전 설치'},
+  '2026-06-29':{type:'dongmun',label:'동문전'},
+  '2026-06-30':{type:'dongmun',label:'동문전'},
+  '2026-07-01':{type:'dongmun',label:'동문전'},
+  '2026-07-02':{type:'dongmun-open',label:'오픈식 09:50~10:15',sub2:'선배와의대화 10:20~11:40'},
+  '2026-07-03':{type:'dongmun',label:'동문전'},
+  '2026-07-04':{type:'dongmun',label:'동문전'},
+  '2026-07-05':{type:'dongmun',label:'동문전'},
+  '2026-07-06':{type:'dongmun',label:'동문전'},
+  '2026-07-08':{type:'dongmun',label:'동문전'},
+  '2026-07-09':{type:'dongmun',label:'동문전'},
+  '2026-07-10':{type:'dongmun',label:'동문전'},
+  '2026-07-11':{type:'dongmun-remove',label:'동문전 철거'},
 };
 
 function ds(y,m,d){ return `${y}-${String(m).padStart(2,'0')}-${String(d).padStart(2,'0')}`; }
@@ -243,6 +274,8 @@ function renderMonth(y,m){
     h+=`<div class="cell${cls?' '+cls:''}" style="${weekendBg}">`;
     h+=`<span class="num${numCls?' '+numCls:''}">${d}</span>`;
     if(ev) h+=`<span class="lbl">${ev.label}</span>`;
+    if(ev&&ev.sub) h+=`<span class="lbl" style="color:#1E5C1E;">${ev.sub}</span>`;
+    if(ev&&ev.sub2) h+=`<span class="lbl">${ev.sub2}</span>`;
     h+=`</div>`;
   }
 
