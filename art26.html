@@ -3,397 +3,204 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>미술전공 방과후 운영 일정 2026</title>
+<title>2026학년도 방과후학교 강사 만족도 조사 | 충남예술고등학교</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Apple SD Gothic Neo','Noto Sans KR',sans-serif; background:#f5f5f0; padding:24px 16px; min-height:100vh; }
-  .wrap { max-width:720px; margin:0 auto; }
-  h1 { font-size:16px; font-weight:600; color:#1a1a1a; margin-bottom:14px; padding-bottom:10px; border-bottom:1.5px solid #ddd; }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans KR',Apple SD Gothic Neo,sans-serif;background:#f4f6f9;color:#222;min-height:100vh}
+  header{background:#1a5276;color:#fff;padding:28px 20px 24px;text-align:center}
+  header h1{font-size:1.35rem;font-weight:700;letter-spacing:-0.01em;margin-bottom:6px}
+  header p{font-size:0.85rem;opacity:0.8}
+  .notice{background:#ebf5fb;border-left:4px solid #2e86c1;margin:20px auto;max-width:820px;padding:14px 18px;border-radius:0 8px 8px 0;font-size:0.84rem;line-height:1.7;color:#1a5276}
+  .notice strong{font-weight:700}
+  .step-row{display:flex;gap:10px;max-width:820px;margin:0 auto 24px;padding:0 16px;flex-wrap:wrap}
+  .step{flex:1;min-width:160px;background:#fff;border-radius:10px;border:1px solid #dce6ef;padding:12px 14px;display:flex;align-items:flex-start;gap:10px}
+  .step-num{width:24px;height:24px;border-radius:50%;background:#2e86c1;color:#fff;font-size:0.75rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+  .step-text{font-size:0.82rem;line-height:1.5;color:#333}
+  .step-text strong{display:block;font-weight:700;margin-bottom:2px;color:#1a5276}
+  .section{max-width:820px;margin:0 auto 28px;padding:0 16px}
+  .section-title{font-size:0.78rem;font-weight:700;color:#7f8c9a;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:12px;padding-bottom:6px;border-bottom:1px solid #dce6ef}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
 
-  /* 드로잉전 상단 배너 */
-  .drawing-banner { display:flex; align-items:center; gap:10px; background:#CCF0F5; border:1px solid #00AACC; border-radius:8px; padding:9px 14px; margin-bottom:14px; }
-  .drawing-banner .dbadge { background:#00AACC; color:#fff; font-size:10px; font-weight:600; border-radius:4px; padding:2px 7px; white-space:nowrap; flex-shrink:0; }
-  .drawing-banner .dtext { font-size:11px; color:#005566; font-weight:600; }
-  .drawing-banner .dsub { font-size:10px; color:#007A99; }
+  /* 공통 카드 */
+  .card{background:#fff;border:1.5px solid #dce6ef;border-radius:14px;padding:18px 12px 14px;display:flex;flex-direction:column;align-items:center;gap:7px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s,transform .1s;cursor:pointer}
+  .card:hover{box-shadow:0 4px 14px rgba(0,0,0,0.10);transform:translateY(-2px)}
+  .avatar{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800}
+  .card-name{font-size:15px;font-weight:800;text-align:center;color:#1a2533;line-height:1.3;margin-top:2px}
+  .card-sub{font-size:13px;font-weight:700;text-align:center;line-height:1.4}
+  .card-btn{margin-top:5px;font-size:11px;padding:5px 14px;border-radius:20px;font-weight:700;transition:all .15s}
 
-  /* 탭 */
-  .tabs { display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap; }
-  .tab-btn { padding:7px 16px; border-radius:20px; font-size:12px; font-weight:600; border:1.5px solid; cursor:pointer; transition:all 0.15s; background:#fff; }
-  .tab-btn.all    { color:#444; border-color:#bbb; }
-  .tab-btn.all.active    { background:#444; color:#fff; border-color:#444; }
-  .tab-btn.bangwa { color:#3B6D11; border-color:#97C459; }
-  .tab-btn.bangwa.active { background:#3B6D11; color:#fff; border-color:#3B6D11; }
-  .tab-btn.dongmun{ color:#5B1F8A; border-color:#9B59C8; }
-  .tab-btn.dongmun.active{ background:#6A0DAD; color:#fff; border-color:#6A0DAD; }
-  .tab-btn.yehon  { color:#0D5C52; border-color:#2BAA96; }
-  .tab-btn.yehon.active  { background:#0D7A6A; color:#fff; border-color:#0D7A6A; }
+  /* ── 전공별 색상 테마 ── */
 
-  /* 범례 */
-  .legend { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
-  .legend span { display:inline-flex; align-items:center; gap:4px; font-size:11px; border-radius:4px; padding:3px 8px; border:0.5px solid; }
+  /* 디자인 : 파랑 */
+  .major-design{border-color:#bfdbfe}
+  .major-design .avatar{background:#dbeafe;color:#1d4ed8}
+  .major-design .card-sub{color:#1d4ed8}
+  .major-design .card-btn{background:#eff6ff;color:#1d4ed8;border:1.5px solid #bfdbfe}
+  .major-design:hover{border-color:#1d4ed8;box-shadow:0 4px 14px rgba(29,78,216,0.15)}
+  .major-design:hover .card-btn{background:#1d4ed8;color:#fff;border-color:#1d4ed8}
 
-  /* 요약 */
-  .summary { display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
-  .summary-box { flex:1; min-width:150px; border-radius:8px; padding:8px 12px; font-size:11px; border:0.5px solid; }
-  .summary-box .title { font-weight:600; margin-bottom:3px; }
+  /* 서양화 : 에메랄드 */
+  .major-western{border-color:#a7f3d0}
+  .major-western .avatar{background:#d1fae5;color:#065f46}
+  .major-western .card-sub{color:#047857}
+  .major-western .card-btn{background:#ecfdf5;color:#047857;border:1.5px solid #a7f3d0}
+  .major-western:hover{border-color:#047857;box-shadow:0 4px 14px rgba(4,120,87,0.15)}
+  .major-western:hover .card-btn{background:#047857;color:#fff;border-color:#047857}
 
-  /* 달력 */
-  .cal-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-  .month-box { background:#fff; border:0.5px solid #ddd; border-radius:10px; overflow:hidden; }
-  .month-header { padding:8px 12px; border-bottom:0.5px solid #ddd; font-size:13px; font-weight:600; color:#1a1a1a; }
-  .day-labels { display:grid; grid-template-columns:repeat(7,1fr); border-bottom:0.5px solid #eee; }
-  .day-label { text-align:center; padding:4px 1px; font-size:10px; color:#888; }
-  .day-label.sat { color:#378ADD; }
-  .day-label.sun { color:#E24B4A; }
-  .cells { display:grid; grid-template-columns:repeat(7,1fr); }
-  .cell { padding:3px 2px; min-height:52px; border:0.5px solid #eee; display:flex; flex-direction:column; align-items:center; transition:opacity 0.2s; }
-  .cell.empty { opacity:0.15; background:#f9f9f9; }
-  .cell.dimmed { opacity:0.15; filter:grayscale(0.6); }
-  .cell .num { font-size:11px; line-height:1.4; color:#1a1a1a; }
-  .cell .num.sat { color:#378ADD; }
-  .cell .num.sun { color:#E24B4A; }
-  .cell .num.bold { font-weight:600; }
-  .cell .lbl { font-size:8.5px; text-align:center; line-height:1.2; margin-top:2px; word-break:keep-all; letter-spacing:-0.2px; }
+  /* 조소 : 주황 */
+  .major-sculpture{border-color:#fed7aa}
+  .major-sculpture .avatar{background:#ffedd5;color:#c2410c}
+  .major-sculpture .card-sub{color:#c2410c}
+  .major-sculpture .card-btn{background:#fff7ed;color:#c2410c;border:1.5px solid #fed7aa}
+  .major-sculpture:hover{border-color:#c2410c;box-shadow:0 4px 14px rgba(194,65,12,0.15)}
+  .major-sculpture:hover .card-btn{background:#c2410c;color:#fff;border-color:#c2410c}
 
-  /* 색상 */
-  .t-holiday   { background:#FCEBEB; border-color:#F09595!important; }
-  .t-holiday .num,.t-holiday .lbl { color:#993C1D; }
-  .t-closure   { background:#FAEEDA; border-color:#EF9F27!important; }
-  .t-closure .num,.t-closure .lbl { color:#854F0B; }
-  .t-exam      { background:#EEEDFE; border-color:#AFA9EC!important; }
-  .t-exam .num,.t-exam .lbl { color:#534AB7; }
-  .t-exam2     { background:#D8D5FB; border-color:#8B84E8!important; }
-  .t-exam2 .num,.t-exam2 .lbl { color:#2D24A0; font-weight:600; }
-  .t-partial   { background:#E6F1FB; border-color:#85B7EB!important; }
-  .t-partial .num,.t-partial .lbl { color:#185FA5; }
-  .t-bangwa-off{ background:#E6F1FB; border-color:#85B7EB!important; }
-  .t-bangwa-off .num,.t-bangwa-off .lbl { color:#185FA5; }
-  .t-range1    { background:#EAF3DE; border-color:#C0DD97!important; }
-  .t-range1 .num,.t-range1 .lbl { color:#3B6D11; }
-  .t-range2    { background:#E1F5EE; border-color:#9FE1CB!important; }
-  .t-range2 .num,.t-range2 .lbl { color:#0F6E56; }
-  .t-start1    { background:#3B6D11; border-color:#3B6D11!important; }
-  .t-start1 .num,.t-start1 .lbl { color:#fff; font-weight:600; }
-  .t-end1      { background:#3B6D11; border-color:#3B6D11!important; }
-  .t-end1 .num,.t-end1 .lbl { color:#fff; font-weight:600; }
-  .t-start2    { background:#F5C518; border-color:#D4A000!important; }
-  .t-start2 .num,.t-start2 .lbl { color:#4a3000; font-weight:600; }
-  .t-end2      { background:#F5C518; border-color:#D4A000!important; }
-  .t-end2 .num,.t-end2 .lbl { color:#4a3000; font-weight:600; }
-  /* 동문전 — 보라 */
-  .t-dongmun-install { background:#EDE0F5; border-color:#9B59C8!important; }
-  .t-dongmun-install .num,.t-dongmun-install .lbl { color:#5B1F8A; font-weight:600; }
-  .t-dongmun-open    { background:#6A0DAD; border-color:#4A007A!important; }
-  .t-dongmun-open .num,.t-dongmun-open .lbl { color:#fff; font-weight:600; }
-  .t-dongmun         { background:#F3EAFC; border-color:#B07DD6!important; }
-  .t-dongmun .num,.t-dongmun .lbl { color:#6B2FA0; }
-  .t-dongmun-remove  { background:#D8C4EE; border-color:#7B3FAF!important; }
-  .t-dongmun-remove .num,.t-dongmun-remove .lbl { color:#3D1060; font-weight:600; }
-  /* 예혼전 — 청록 */
-  .t-yehon-install { background:#D0F0EC; border-color:#2BAA96!important; }
-  .t-yehon-install .num,.t-yehon-install .lbl { color:#0D5C52; font-weight:600; }
-  .t-yehon-open    { background:#0D7A6A; border-color:#085549!important; }
-  .t-yehon-open .num,.t-yehon-open .lbl { color:#fff; font-weight:600; }
-  .t-yehon-workshop{ background:#B8EDE7; border-color:#3CC4B0!important; }
-  .t-yehon-workshop .num,.t-yehon-workshop .lbl { color:#0A4A42; font-weight:600; }
-  /* 학교 전체 행사 — 앰버 */
-  .t-school-event  { background:#FFF5CC; border-color:#F0C000!important; }
-  .t-school-event .num,.t-school-event .lbl { color:#7A5000; font-weight:600; }
+  /* 한국화 : 보라 */
+  .major-korean{border-color:#e9d5ff}
+  .major-korean .avatar{background:#f3e8ff;color:#7e22ce}
+  .major-korean .card-sub{color:#7e22ce}
+  .major-korean .card-btn{background:#faf5ff;color:#7e22ce;border:1.5px solid #e9d5ff}
+  .major-korean:hover{border-color:#7e22ce;box-shadow:0 4px 14px rgba(126,34,206,0.15)}
+  .major-korean:hover .card-btn{background:#7e22ce;color:#fff;border-color:#7e22ce}
 
-  /* 세부 일정 */
-  .detail-section { margin-top:14px; background:#fff; border-radius:10px; border:0.5px solid #ddd; overflow:hidden; }
-  .detail-header  { padding:8px 14px; font-size:12px; font-weight:600; border-bottom:0.5px solid #eee; }
-  .detail-list    { padding:8px 0; }
-  .detail-item    { display:flex; gap:10px; padding:6px 14px; border-bottom:0.5px solid #f0f0f0; align-items:flex-start; }
-  .detail-item:last-child { border-bottom:none; }
-  .detail-date    { font-size:11px; font-weight:600; white-space:nowrap; min-width:80px; color:#555; }
-  .detail-dot     { width:8px; height:8px; border-radius:50%; margin-top:3px; flex-shrink:0; }
-  .detail-text    { font-size:11px; color:#333; line-height:1.5; }
-  .detail-sub     { font-size:10px; color:#888; margin-top:1px; }
+  /* 드로잉 : 분홍 */
+  .major-drawing{border-color:#fbcfe8}
+  .major-drawing .avatar{background:#fce7f3;color:#be185d}
+  .major-drawing .card-sub{color:#be185d}
+  .major-drawing .card-btn{background:#fdf2f8;color:#be185d;border:1.5px solid #fbcfe8}
+  .major-drawing:hover{border-color:#be185d;box-shadow:0 4px 14px rgba(190,24,93,0.15)}
+  .major-drawing:hover .card-btn{background:#be185d;color:#fff;border-color:#be185d}
 
-  @media(max-width:500px){ .cal-grid{grid-template-columns:1fr;} .summary{flex-direction:column;} }
-  .footer { margin-top:14px; font-size:10px; color:#aaa; text-align:right; }
+  footer{text-align:center;padding:28px 16px;font-size:0.78rem;color:#aaa;border-top:1px solid #e0e6ec;margin-top:8px}
 </style>
 </head>
 <body>
-<div class="wrap">
-  <h1>미술전공 방과후 운영 일정 — 2026년 5~8월</h1>
 
-  <div class="drawing-banner">
-    <span class="dbadge">10.16(금) 예정</span>
-    <div>
-      <div class="dtext">1학년 드로잉전 &nbsp;·&nbsp; 15:00~ &nbsp;·&nbsp; 본교 갤러리</div>
-      <div class="dsub">※ 달력 표시 범위(5~8월) 외 일정</div>
-    </div>
+<header>
+  <h1>2026학년도 방과후학교 강사 만족도 조사</h1>
+  <p>충남예술고등학교 미술교육부</p>
+</header>
+
+<div style="max-width:820px;margin:20px auto 16px;padding:0 16px">
+  <div class="notice">
+    📋 <strong>설문 목적:</strong> 방과후 강사 운영 및 강사 재계약을 위한 기초자료로 활용됩니다.<br>
+    🔒 <strong>비밀 보장:</strong> 응답 내용은 담당교사 외 비공개를 원칙으로 하며, 철저히 비밀이 보장됩니다.
   </div>
+</div>
 
-  <div class="tabs">
-    <button class="tab-btn all"     onclick="setTab('all')">전체</button>
-    <button class="tab-btn bangwa"  onclick="setTab('bangwa')">방과후</button>
-    <button class="tab-btn dongmun" onclick="setTab('dongmun')">동문전 · 선배와의 대화</button>
-    <button class="tab-btn yehon"   onclick="setTab('yehon')">예혼전</button>
+<div style="max-width:820px;margin:0 auto 24px;padding:0 16px">
+  <div class="step-row" style="margin:0;padding:0">
+    <div class="step"><div class="step-num">1</div><div class="step-text"><strong>강사 찾기</strong>아래에서 내 강사 확인</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text"><strong>배너 클릭</strong>해당 강사 버튼 클릭</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text"><strong>설문 작성</strong>구글폼에서 응답 제출</div></div>
   </div>
+</div>
 
-  <div class="legend"  id="legend"></div>
-  <div id="summary-wrap"></div>
-  <div class="cal-grid" id="cal-grid"></div>
-  <div id="detail-wrap"></div>
-
-  <div class="footer">충남예술고등학교 미술교육부 · 2026</div>
+<!-- 전공 범례 -->
+<div style="max-width:820px;margin:0 auto 20px;padding:0 16px;display:flex;gap:8px;flex-wrap:wrap">
+  <span style="font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;background:#dbeafe;color:#1d4ed8">■ 디자인</span>
+  <span style="font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;background:#d1fae5;color:#047857">■ 서양화</span>
+  <span style="font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;background:#ffedd5;color:#c2410c">■ 조소</span>
+  <span style="font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;background:#f3e8ff;color:#7e22ce">■ 한국화</span>
+  <span style="font-size:12px;font-weight:700;padding:4px 12px;border-radius:20px;background:#fce7f3;color:#be185d">■ 드로잉</span>
 </div>
 
 <script>
-const DAYS   = ['일','월','화','수','목','금','토'];
-const MONTHS = ['','1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+const BASE = "https://docs.google.com/forms/d/e/1FAIpQLSe5daqgOtMvspcO6WE8YB8DiEMpeJ8cuaMgRygEEH6JOqc29g/viewform";
+const ENTRY = "entry.392076014";
+function link(name){ return BASE + "?usp=pp_url&" + ENTRY + "=" + encodeURIComponent(name); }
 
-const events = {
-  '2026-05-01':{type:'holiday',   label:'노동절',         tags:['all']},
-  '2026-05-04':{type:'closure',   label:'재량휴업',       tags:['all','bangwa']},
-  '2026-05-05':{type:'holiday',   label:'어린이날',       tags:['all']},
-  '2026-05-06':{type:'start1',    label:'방과후 시작',    tags:['all','bangwa']},
-  '2026-05-07':{type:'exam',      label:'3학년 모의고사', tags:['all']},
-  '2026-05-15':{type:'closure',   label:'체육대회',       tags:['all','bangwa']},
-  '2026-05-25':{type:'holiday',   label:'대체공휴일',     tags:['all']},
-  '2026-06-03':{type:'holiday',   label:'지방선거',       tags:['all']},
-  '2026-06-22':{type:'exam',      label:'2회고사 주간',   tags:['all']},
-  '2026-06-23':{type:'exam',      label:'2회고사 주간',   tags:['all']},
-  '2026-06-24':{type:'exam2',     label:'2회고사',        tags:['all']},
-  '2026-06-25':{type:'exam2',     label:'2회고사',        tags:['all']},
-  '2026-06-26':{type:'exam2',     label:'2회고사',        tags:['all']},
-  '2026-07-04':{type:'bangwa-off',label:'1·2학년 휴강',  tags:['all','bangwa']},
-  '2026-07-07':{type:'partial',   label:'1·2학년 휴강',  tags:['all','bangwa'], sub2:'무용과예술제 19:00~'},
-  '2026-07-16':{type:'end1',      label:'방과후 종료',    tags:['all','bangwa']},
-  '2026-07-17':{type:'holiday',   label:'제헌절',         tags:['all']},
-  '2026-07-21':{type:'closure',   label:'방학식',         tags:['all','bangwa']},
-  '2026-07-22':{type:'start2',    label:'방학특강 시작',  tags:['all','bangwa']},
-  '2026-08-11':{type:'end2',      label:'방학특강 종료',  tags:['all','bangwa']},
-  '2026-08-18':{type:'closure',   label:'개학일',         tags:['all','bangwa']},
-  '2026-06-28':{type:'dongmun-install', label:'동문전 설치',        tags:['all','dongmun']},
-  '2026-06-29':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-06-30':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-01':{type:'dongmun',         label:'동문전',             tags:['all','dongmun'], sub2:'음악회 19:00~'},
-  '2026-07-02':{type:'dongmun-open',    label:'오픈식 09:50~10:15', tags:['all','dongmun'], sub2:'선배와의대화 10:20~', sub3:'음악과예술제 14:00~'},
-  '2026-07-03':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-04':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-05':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-06':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-08':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-09':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-10':{type:'dongmun',         label:'동문전',             tags:['all','dongmun']},
-  '2026-07-11':{type:'dongmun-remove',  label:'동문전 철거',        tags:['all','dongmun']},
-  '2026-07-13':{type:'yehon-install',   label:'예혼전 설치',        tags:['all','yehon'], sub2:'4~7교시'},
-  '2026-07-14':{type:'yehon-open',      label:'예혼전 오픈식',      tags:['all','yehon'], sub2:'15:00~'},
-  '2026-07-15':{type:'yehon-workshop',  label:'예혼 워크숍',        tags:['all','yehon'], sub2:'시청각실 5~7교시'}
-};
+function majorClass(sub){
+  if(sub.includes("디자인")) return "major-design";
+  if(sub.includes("서양화")) return "major-western";
+  if(sub.includes("조소"))   return "major-sculpture";
+  if(sub.includes("한국화")) return "major-korean";
+  if(sub.includes("드로잉")) return "major-drawing";
+  return "major-design";
+}
+function initials(name){ return name[0]; }
+</script>
 
-const legends = {
-  all: [
-    {bg:'#FCEBEB',color:'#993C1D',border:'#F09595',text:'공휴일·법정휴무'},
-    {bg:'#FAEEDA',color:'#854F0B',border:'#EF9F27',text:'학교행사·재량휴무'},
-    {bg:'#EEEDFE',color:'#534AB7',border:'#AFA9EC',text:'시험주간'},
-    {bg:'#D8D5FB',color:'#2D24A0',border:'#8B84E8',text:'시험일'},
-    {bg:'#E6F1FB',color:'#185FA5',border:'#85B7EB',text:'휴강·부분운영'},
-    {bg:'#EAF3DE',color:'#3B6D11',border:'#97C459',text:'방과후 운영'},
-    {bg:'#E1F5EE',color:'#0F6E56',border:'#5DCAA5',text:'방학중 방과후'},
-    {bg:'#F5C518',color:'#4a3000',border:'#D4A000',text:'방학특강·시작·종료'},
-    {bg:'#EDE0F5',color:'#5B1F8A',border:'#9B59C8',text:'동문전 설치'},
-    {bg:'#6A0DAD',color:'#fff',   border:'#4A007A',text:'동문전 오픈'},
-    {bg:'#F3EAFC',color:'#6B2FA0',border:'#B07DD6',text:'동문전 전시'},
-    {bg:'#D8C4EE',color:'#3D1060',border:'#7B3FAF',text:'동문전 철거'},
-    {bg:'#D0F0EC',color:'#0D5C52',border:'#2BAA96',text:'예혼전 설치'},
-    {bg:'#0D7A6A',color:'#fff',   border:'#085549',text:'예혼전 오픈'},
-    {bg:'#B8EDE7',color:'#0A4A42',border:'#3CC4B0',text:'예혼 워크숍'},
-    {bg:'#FFF5CC',color:'#7A5000',border:'#F0C000',text:'학교 전체 행사'}
+<!-- 1학년 -->
+<div class="section">
+  <div class="section-title">1학년</div>
+  <div class="grid" id="g1"></div>
+</div>
+<!-- 2학년 -->
+<div class="section">
+  <div class="section-title">2학년</div>
+  <div class="grid" id="g2"></div>
+</div>
+<!-- 3학년 -->
+<div class="section">
+  <div class="section-title">3학년</div>
+  <div class="grid" id="g3"></div>
+</div>
+<!-- 드로잉 -->
+<div class="section">
+  <div class="section-title">드로잉</div>
+  <div class="grid" id="gd"></div>
+</div>
+
+<footer>충남예술고등학교 미술교육부 · 2026학년도 방과후학교</footer>
+
+<script>
+const instructors = {
+  g1: [
+    { name:"김지혜", sub:"1학년 디자인", val:"1학년 디자인 - 김지혜" },
+    { name:"최이진", sub:"1학년 디자인", val:"1학년 디자인 - 최이진" },
+    { name:"신재욱", sub:"1학년 서양화", val:"1학년 서양화 -신재욱" },
+    { name:"김두나", sub:"1학년 서양화", val:"1학년 서양화-김두나" },
+    { name:"민수진", sub:"1학년 조소",   val:"1학년 조소- 민수진" },
+    { name:"남연지", sub:"1학년 조소",   val:"1학년 조소- 남연지" },
+    { name:"이대호", sub:"1학년 한국화", val:"1학년 한국화- 이대호" },
   ],
-  bangwa: [
-    {bg:'#EAF3DE',color:'#3B6D11',border:'#97C459',text:'방과후 운영'},
-    {bg:'#E1F5EE',color:'#0F6E56',border:'#5DCAA5',text:'방학중 방과후'},
-    {bg:'#3B6D11',color:'#fff',   border:'#3B6D11',text:'시작·종료'},
-    {bg:'#F5C518',color:'#4a3000',border:'#D4A000',text:'방학특강'},
-    {bg:'#E6F1FB',color:'#185FA5',border:'#85B7EB',text:'휴강'},
-    {bg:'#FAEEDA',color:'#854F0B',border:'#EF9F27',text:'학교행사·휴무'}
+  g2: [
+    { name:"최문석", sub:"2학년 디자인", val:"2학년 디자인 -최문석" },
+    { name:"윤지윤", sub:"2학년 디자인", val:"2학년 디자인- 윤지윤" },
+    { name:"박유빈", sub:"2학년 디자인", val:"2학년 디자인- 박유빈" },
+    { name:"방난영", sub:"2학년 디자인", val:"2학년 디자인- 방난영" },
+    { name:"김지혜", sub:"2학년 디자인", val:"2학년 디자인- 김지혜" },
+    { name:"이정용", sub:"2학년 서양화", val:"2학년 서양화- 이정용" },
+    { name:"권혜연", sub:"2학년 서양화", val:"2학년 서양화-권혜연" },
+    { name:"조경연", sub:"2학년 조소",   val:"2학년 조소- 조경연" },
+    { name:"김현민", sub:"2학년 조소",   val:"2학년 조소- 김현민" },
+    { name:"권영찬", sub:"2학년 한국화", val:"2학년 한국화- 권영찬" },
+    { name:"김준기", sub:"2학년 한국화", val:"2학년 한국화- 김준기" },
   ],
-  dongmun: [
-    {bg:'#EDE0F5',color:'#5B1F8A',border:'#9B59C8',text:'동문전 설치'},
-    {bg:'#6A0DAD',color:'#fff',   border:'#4A007A',text:'동문전 오픈식·선배와의 대화'},
-    {bg:'#F3EAFC',color:'#6B2FA0',border:'#B07DD6',text:'동문전 전시'},
-    {bg:'#D8C4EE',color:'#3D1060',border:'#7B3FAF',text:'동문전 철거'},
-    {bg:'#FFF5CC',color:'#7A5000',border:'#F0C000',text:'학교 전체 행사'}
+  g3: [
+    { name:"임정은", sub:"3학년 서양화", val:"3학년 서양화- 임정은" },
+    { name:"이현아", sub:"3학년 서양화", val:"3학년 서양화- 이현아" },
+    { name:"조윤진", sub:"3학년 조소",   val:"3학년 조소- 조윤진" },
+    { name:"배영규", sub:"3학년 조소",   val:"3학년 조소-배영규" },
+    { name:"진민규", sub:"3학년 한국화", val:"3학년 한국화- 진민규" },
+    { name:"남여정", sub:"3학년 한국화", val:"3학년 한국화-남여정" },
   ],
-  yehon: [
-    {bg:'#D0F0EC',color:'#0D5C52',border:'#2BAA96',text:'예혼전 설치'},
-    {bg:'#0D7A6A',color:'#fff',   border:'#085549',text:'예혼전 오픈식'},
-    {bg:'#B8EDE7',color:'#0A4A42',border:'#3CC4B0',text:'예혼 워크숍'},
-    {bg:'#CCF0F5',color:'#005566',border:'#00AACC',text:'1학년 드로잉전(10월)'}
+  gd: [
+    { name:"이정연", sub:"드로잉", val:"드로잉 - 이정연" },
+    { name:"임이혜", sub:"드로잉", val:"드로잉- 임이혜" },
+    { name:"조은시", sub:"드로잉", val:"드로잉- 조은시" },
+    { name:"이도경", sub:"드로잉", val:"드로잉- 이도경" },
   ]
 };
 
-const summaryHTML = {
-  all: '<div class="summary">'
-     + '<div class="summary-box" style="background:#EAF3DE;border-color:#97C459;"><div class="title" style="color:#27500A;">▸ 1학기 2차 방과후</div><div style="color:#3B6D11;">5.6(수) ~ 7.16(목) · 약 72일</div></div>'
-     + '<div class="summary-box" style="background:#E1F5EE;border-color:#5DCAA5;"><div class="title" style="color:#085041;">▸ 방학중 미술방과후</div><div style="color:#0F6E56;">7.22(수) ~ 8.11(화) · 15일 · 1일 7시간</div><div style="color:#0F6E56;margin-top:2px;">개학일 8.18(화)</div></div>'
-     + '<div class="summary-box" style="background:#F3EAFC;border-color:#B07DD6;"><div class="title" style="color:#5B1F8A;">▸ 제3회 미술과 동문전 (30주년)</div><div style="color:#6B2FA0;">6.28(일) 설치 · 6.29~7.10 전시</div><div style="color:#4A007A;margin-top:2px;">7.2(목) 오픈식 · 7.11(토) 철거</div></div>'
-     + '<div class="summary-box" style="background:#D0F0EC;border-color:#2BAA96;"><div class="title" style="color:#0D5C52;">▸ 예혼전 (드로잉전)</div><div style="color:#0D5C52;">7.13(월) 설치 · 7.14(화) 오픈식 15:00~</div><div style="color:#0A4A42;margin-top:2px;">7.15(수) 예혼 워크숍 (시청각실) 5~7교시</div></div>'
-     + '<div class="summary-box" style="background:#FFF5CC;border-color:#F0C000;"><div class="title" style="color:#7A5000;">▸ 학교 전체 행사</div><div style="color:#7A5000;">7.1(수) 동문음악회 19:00~ 충남학생교육문화원</div><div style="color:#7A5000;margin-top:2px;">7.2(목) 음악과 예술제 기념식 14:00~ 충남학생교육문화원</div><div style="color:#7A5000;margin-top:2px;">7.7(화) 무용과 예술제 19:00~ 천안예술의전당</div></div>'
-     + '</div>',
-  bangwa: '<div class="summary">'
-        + '<div class="summary-box" style="background:#EAF3DE;border-color:#97C459;"><div class="title" style="color:#27500A;">▸ 1학기 2차 방과후</div><div style="color:#3B6D11;">5.6(수) ~ 7.16(목) · 약 72일</div><div style="color:#3B6D11;margin-top:2px;">7.4(토) · 7.7(화) 1·2학년 휴강</div></div>'
-        + '<div class="summary-box" style="background:#E1F5EE;border-color:#5DCAA5;"><div class="title" style="color:#085041;">▸ 방학중 미술방과후 (시작일 변경예정)</div><div style="color:#0F6E56;">7.22(수) ~ 8.11(화) · 15일 · 1일 7시간</div><div style="color:#0F6E56;margin-top:2px;">개학일 8.18(화)</div></div>'
-        + '</div>',
-  dongmun: '<div class="summary">'
-         + '<div class="summary-box" style="background:#F3EAFC;border-color:#B07DD6;"><div class="title" style="color:#5B1F8A;">▸ 제3회 미술과 동문전 (30주년)</div><div style="color:#6B2FA0;">6.28(일) 작품설치 · 6.29~7.10 전시</div><div style="color:#4A007A;margin-top:2px;">7.11(토) 작품철거</div></div>'
-         + '<div class="summary-box" style="background:#6A0DAD;border-color:#4A007A;"><div class="title" style="color:#fff;">▸ 7.2(목) 오픈식 · 선배와의 대화</div><div style="color:#ddd;">오픈식 09:50~10:15 · 본교 갤러리</div><div style="color:#ddd;margin-top:2px;">선배와의 대화 10:20~11:40 · 강당</div><div style="color:#ddd;margin-top:2px;">대상 : 미술과 1·2학년</div></div>'
-         + '<div class="summary-box" style="background:#FFF5CC;border-color:#F0C000;"><div class="title" style="color:#7A5000;">▸ 학교 전체 행사</div><div style="color:#7A5000;">7.1(수) 동문음악회 19:00~ 충남학생교육문화원</div><div style="color:#7A5000;margin-top:2px;">7.2(목) 음악과 예술제 기념식 14:00~ 충남학생교육문화원</div><div style="color:#7A5000;margin-top:2px;">7.7(화) 무용과 예술제 19:00~ 천안예술의전당</div></div>'
-         + '</div>',
-  yehon: '<div class="summary">'
-       + '<div class="summary-box" style="background:#D0F0EC;border-color:#2BAA96;"><div class="title" style="color:#0D5C52;">▸ 예혼전 (드로잉전)</div><div style="color:#0D5C52;">7.13(월) 작품설치 (4~7교시)</div><div style="color:#0D5C52;margin-top:2px;">7.14(화) 오픈식 15:00~</div><div style="color:#0A4A42;margin-top:2px;">7.15(수) 예혼 워크숍 · 시청각실 5~7교시</div></div>'
-       + '<div class="summary-box" style="background:#B8EDE7;border-color:#3CC4B0;"><div class="title" style="color:#0A4A42;">▸ 전공별 자리배치 (추첨)</div><div style="color:#0A4A42;">디자인 · 서양화 · 조소 · 한국화</div><div style="color:#0A4A42;margin-top:2px;">개인별 작품 와이어 설치 완료 확인</div></div>'
-       + '<div class="summary-box" style="background:#CCF0F5;border-color:#00AACC;"><div class="title" style="color:#005566;">▸ 1학년 드로잉전 (10월)</div><div style="color:#005566;">10.16(금) 15:00~ · 본교 갤러리</div><div style="color:#007A99;margin-top:2px;">※ 달력 범위(5~8월) 외 별도 일정</div></div>'
-       + '</div>'
-};
-
-const tabDetails = {
-  all: [
-    {date:'5.6(수)',        dot:'#3B6D11', text:'방과후 시작'},
-    {date:'6.28(일)',       dot:'#9B59C8', text:'동문전 작품 설치'},
-    {date:'6.29~7.10',     dot:'#B07DD6', text:'동문전 전시 (학교 본관)'},
-    {date:'7.1(수)',        dot:'#F0C000', text:'동문 음악회  19:00 ~ 21:00', sub:'충남학생교육문화원'},
-    {date:'7.2(목)',        dot:'#6A0DAD', text:'동문전 오픈식  09:50 ~ 10:15  · 본교 갤러리'},
-    {date:'7.2(목)',        dot:'#6A0DAD', text:'선배와의 대화  10:20 ~ 11:40  · 강당', sub:'대상 : 미술과 1·2학년'},
-    {date:'7.2(목)',        dot:'#F0C000', text:'음악과 예술제 기념식  14:00~', sub:'충남학생교육문화원'},
-    {date:'7.4(토)',        dot:'#185FA5', text:'1·2학년 방과후 휴강'},
-    {date:'7.7(화)',        dot:'#185FA5', text:'1·2학년 방과후 휴강'},
-    {date:'7.7(화)',        dot:'#F0C000', text:'무용과 예술제  19:00~', sub:'천안예술의전당'},
-    {date:'7.11(토)',       dot:'#7B3FAF', text:'동문전 작품 철거'},
-    {date:'7.13(월)',       dot:'#2BAA96', text:'예혼전 작품 설치  4~7교시'},
-    {date:'7.14(화)',       dot:'#0D7A6A', text:'예혼전 오픈식  15:00~'},
-    {date:'7.15(수)',       dot:'#3CC4B0', text:'예혼 워크숍  5~7교시  (시청각실)'},
-    {date:'7.16(목)',       dot:'#3B6D11', text:'방과후 종료'},
-    {date:'7.22(수)',       dot:'#D4A000', text:'방학중 방과후 시작'},
-    {date:'8.11(화)',       dot:'#D4A000', text:'방학중 방과후 종료'},
-    {date:'10.16(금)',      dot:'#00AACC', text:'1학년 드로잉전  15:00~  · 본교 갤러리', sub:'※ 달력 범위 외 일정'}
-  ],
-  bangwa: [
-    {date:'5.6(수)',   dot:'#3B6D11', text:'방과후 시작'},
-    {date:'5.15(금)',  dot:'#854F0B', text:'체육대회 — 방과후 휴무'},
-    {date:'7.4(토)',   dot:'#185FA5', text:'1·2학년 방과후 휴강'},
-    {date:'7.7(화)',   dot:'#185FA5', text:'1·2학년 방과후 휴강'},
-    {date:'7.16(목)',  dot:'#3B6D11', text:'방과후 종료'},
-    {date:'7.21(화)',  dot:'#854F0B', text:'방학식'},
-    {date:'7.22(수)',  dot:'#D4A000', text:'방학중 방과후 시작'},
-    {date:'8.11(화)',  dot:'#D4A000', text:'방학중 방과후 종료'},
-    {date:'8.18(화)',  dot:'#854F0B', text:'개학일'}
-  ],
-  dongmun: [
-    {date:'6.28(일)',           dot:'#9B59C8', text:'작품 설치'},
-    {date:'6.29(월)~7.10(목)', dot:'#B07DD6', text:'동문전 전시 (학교 본관)'},
-    {date:'7.1(수)',            dot:'#F0C000', text:'동문 음악회  19:00 ~ 21:00', sub:'충남학생교육문화원'},
-    {date:'7.2(목)',            dot:'#6A0DAD', text:'동문전 오픈식  09:50 ~ 10:15  · 본교 갤러리', sub:'대상 : 미술과 1·2학년'},
-    {date:'7.2(목)',            dot:'#6A0DAD', text:'선배와의 대화  10:20 ~ 11:40  · 강당', sub:'대상 : 미술과 1·2학년'},
-    {date:'7.2(목)',            dot:'#F0C000', text:'음악과 예술제 기념식  14:00~', sub:'충남학생교육문화원'},
-    {date:'7.11(토)',           dot:'#7B3FAF', text:'작품 철거'}
-  ],
-  yehon: [
-    {date:'7.13(월)', dot:'#2BAA96', text:'예혼전 작품 설치  4~7교시', sub:'전공별 자리배치 추첨 (디·서·조·한국화) / 와이어 설치 확인'},
-    {date:'7.14(화)', dot:'#0D7A6A', text:'예혼전 오픈식  15:00~'},
-    {date:'7.15(수)', dot:'#3CC4B0', text:'예혼 워크숍  5~7교시  (시청각실)'},
-    {date:'10.16(금)',dot:'#00AACC', text:'1학년 드로잉전  15:00~  · 본교 갤러리', sub:'※ 달력 범위 외 별도 일정'}
-  ]
-};
-
-function ds(y,m,d){ return y+'-'+String(m).padStart(2,'0')+'-'+String(d).padStart(2,'0'); }
-
-function getCellClass(key){
-  const ev = events[key];
-  if(ev) return 't-'+ev.type;
-  if(key>='2026-05-06'&&key<='2026-07-16') return 't-range1';
-  if(key>='2026-07-22'&&key<='2026-08-11') return 't-range2';
-  return '';
-}
-
-function isRelevant(key,tab){
-  if(tab==='all') return true;
-  const ev=events[key];
-  if(ev&&ev.tags&&ev.tags.includes(tab)) return true;
-  if(tab==='bangwa'){
-    if(key>='2026-05-06'&&key<='2026-07-16') return true;
-    if(key>='2026-07-22'&&key<='2026-08-11') return true;
-  }
-  return false;
-}
-
-const specialTypes=['holiday','closure','exam','exam2','partial','bangwa-off','start1','end1','start2','end2','yehon-install','yehon-open','yehon-workshop','dongmun-install','dongmun-open','dongmun-remove','school-event'];
-
-function renderMonth(y,m,tab){
-  var fd=new Date(y,m-1,1).getDay(), dim=new Date(y,m,0).getDate();
-  var h='<div class="month-box">';
-  h+='<div class="month-header">'+y+'년 '+MONTHS[m]+'</div>';
-  h+='<div class="day-labels">';
-  DAYS.forEach(function(d,i){ h+='<div class="day-label'+(i===6?' sat':i===0?' sun':'')+'">'+d+'</div>'; });
-  h+='</div><div class="cells">';
-  for(var i=0;i<fd;i++) h+='<div class="cell empty"></div>';
-  for(var d=1;d<=dim;d++){
-    var key=ds(y,m,d), dow=(fd+d-1)%7, ev=events[key];
-    var cls=getCellClass(key), rel=isRelevant(key,tab);
-    var isSat=dow===6, isSun=dow===0;
-    var numCls=!cls?(isSat?'sat':isSun?'sun':''):'bold';
-    var hasSpecial=ev&&specialTypes.indexOf(ev.type)>=0;
-    var wbg=!hasSpecial&&rel?(isSat?'background:#EEF5FC;':isSun?'background:#FEF0F0;':''):'';
-    h+='<div class="cell'+(cls?' '+cls:'')+(rel?'':' dimmed')+'" style="'+wbg+'">';
-    h+='<span class="num'+(numCls?' '+numCls:'')+'">'+d+'</span>';
-    if(ev&&rel){
-      h+='<span class="lbl">'+ev.label+'</span>';
-      if(ev.sub)  h+='<span class="lbl" style="color:#7A5000;">'+ev.sub+'</span>';
-      if(ev.sub2) h+='<span class="lbl">'+ev.sub2+'</span>';
-      if(ev.sub3) h+='<span class="lbl" style="color:#7A5000;">'+ev.sub3+'</span>';
-    }
-    h+='</div>';
-  }
-  var rem=(7-((fd+dim)%7))%7;
-  for(var i=0;i<rem;i++) h+='<div class="cell empty"></div>';
-  h+='</div></div>';
-  return h;
-}
-
-function renderLegend(tab){
-  return (legends[tab]||[]).map(function(l){
-    return '<span style="background:'+l.bg+';color:'+l.color+';border-color:'+l.border+';">'+l.text+'</span>';
-  }).join('');
-}
-
-function renderDetail(tab){
-  var items=tabDetails[tab]; if(!items||!items.length) return '';
-  var hdr={all:'전체 주요 일정',bangwa:'방과후 주요 일정',dongmun:'동문전 · 선배와의 대화 일정',yehon:'예혼전 일정'};
-  var hcol={all:'#444',bangwa:'#3B6D11',dongmun:'#5B1F8A',yehon:'#0D5C52'};
-  var hbg={all:'#f7f7f7',bangwa:'#EAF3DE',dongmun:'#F3EAFC',yehon:'#D0F0EC'};
-  var h='<div class="detail-section">';
-  h+='<div class="detail-header" style="background:'+hbg[tab]+';color:'+hcol[tab]+';">'+hdr[tab]+'</div>';
-  h+='<div class="detail-list">';
-  items.forEach(function(item){
-    h+='<div class="detail-item">';
-    h+='<div class="detail-date">'+item.date+'</div>';
-    h+='<div class="detail-dot" style="background:'+item.dot+';"></div>';
-    h+='<div><div class="detail-text">'+item.text+'</div>';
-    if(item.sub) h+='<div class="detail-sub">'+item.sub+'</div>';
-    h+='</div></div>';
+Object.entries(instructors).forEach(([gid, list]) => {
+  const grid = document.getElementById(gid);
+  list.forEach(p => {
+    const mc = majorClass(p.sub);
+    const a = document.createElement('a');
+    a.className = 'card ' + mc;
+    a.href = link(p.val);
+    a.target = '_blank';
+    a.innerHTML = `
+      <div class="avatar">${initials(p.name)}</div>
+      <div class="card-name">${p.name} 강사</div>
+      <div class="card-sub">${p.sub}</div>
+      <div class="card-btn">설문 참여 →</div>
+    `;
+    grid.appendChild(a);
   });
-  h+='</div></div>';
-  return h;
-}
-
-function setTab(tab){
-  document.querySelectorAll('.tab-btn').forEach(function(btn){
-    btn.classList.toggle('active', btn.getAttribute('onclick').indexOf("'"+tab+"'")>=0);
-  });
-  document.getElementById('legend').innerHTML=renderLegend(tab);
-  document.getElementById('summary-wrap').innerHTML=summaryHTML[tab]||'';
-  var grid=document.getElementById('cal-grid');
-  grid.innerHTML='';
-  [5,6,7,8].forEach(function(m){ grid.innerHTML+=renderMonth(2026,m,tab); });
-  document.getElementById('detail-wrap').innerHTML=renderDetail(tab);
-}
-
-setTab('all');
+});
 </script>
 </body>
 </html>
